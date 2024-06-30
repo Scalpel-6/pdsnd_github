@@ -282,7 +282,7 @@ def display_data(df):
     raw_data_prompt = input("Do you want to see the first 5 rows of data?  Please enter yes or no. ")
 
     # Loop through dataframe at an increment of the number_of_rows_to_display variable
-    if raw_data_prompt.lower() == 'yes':
+    while raw_data_prompt.lower() == 'yes':
         for i in range(0, total_rows_in_dataframe, number_of_rows_to_display):
             print(df.iloc[i:i+number_of_rows_to_display])
             print('\n')
