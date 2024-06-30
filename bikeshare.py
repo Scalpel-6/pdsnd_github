@@ -23,15 +23,15 @@ def get_filters():
         try:
             city = input("\nWhich city would you like Bikeshare data?  \nPlease enter Chicago, New York City, or Washington: ").lower()
         except ValueError:
-            print('I did not recognize that city. Please try again.')
+            print('\nI did not recognize that city. Please try again.')
         if city == 'chicago':
-            print("Gathering data for Chicago!\n")
+            print("\nGathering data for Chicago!\n")
         elif city == 'new york city':
-            print("Gathering data for New York City!\n")
+            print("\nGathering data for New York City!\n")
         elif city == 'washington':
-            print("Gathering informaton on Washington!\n")
+            print("\nGathering informaton on Washington!\n")
         else:
-            print("I did not recognize that city. Please restart application.")
+            print("\nI did not recognize that city. Please restart application.")
             sys.exit()
         
     # get user input for month (all, january, february, ... , june)
@@ -61,25 +61,25 @@ def get_filters():
         try:
             day = input("\nWhat day of the week would you like information?  \nPlease type Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, or all to include all days: ").lower()  
         except ValueError:
-            print('I did not recognize that day.  Please restart.')
+            print('\nI did not recognize that day.  Please restart.')
         if day == 'monday':
-            print("Gathering information for Monday!\n")
+            print("\nGathering information for Monday!\n")
         elif day == 'tuesday':
-            print("Gathering information for Tuesday!\n")       
+            print("\nGathering information for Tuesday!\n")       
         elif day == 'wednesday':
-            print("Gathering information for Wednesday!\n")
+            print("\nGathering information for Wednesday!\n")
         elif day == 'thursday':
-            print("Gathering information for Thursday!\n")
+            print("\nGathering information for Thursday!\n")
         elif day == 'friday':
-            print("Gathering information for Friday!\n")
+            print("\nGathering information for Friday!\n")
         elif day == 'saturday':
-            print("Gathering information for Saturday!\n")
+            print("\nGathering information for Saturday!\n")
         elif day == 'sunday':
-            print("Gathering information for Sunday!\n")
+            print("\nGathering information for Sunday!\n")
         elif day == 'all':
-            print("Gathering information for all available days!")
+            print("\nGathering information for all available days!")
         else:
-            print("I did not recognize that day.  Please restart application.")
+            print("\nI did not recognize that day.  Please restart application.")
             sys.exit()
         
         print('-'*40)
@@ -120,16 +120,14 @@ def load_data(city, month, day):
 
     # filter by day of week if applicable
     if day != 'all':
-         if day == 'sunday':
-             print("Unforunately there is no data for Sundays.")
-         # filter by day of week to create the new dataframe
-         else:
-            days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday','sunday']
-            day = days.index(day) + 1
-            df = df[df['day_of_week'] == day]
+
+    # filter by day of week to create the new dataframe
+        days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday','sunday']
+        day = days.index(day)
+        df = df[df['day_of_week'] == day]
     
-        #filter by month to creat the new dataframe
-            df = df[df['day_of_week'] == day]
+    # filter by month to creat the new dataframe
+        df = df[df['day_of_week'] == day]
     
     return df
 
