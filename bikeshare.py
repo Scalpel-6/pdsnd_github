@@ -23,7 +23,7 @@ def get_filters():
         try:
             city = input("\nWhich city would you like Bikeshare data?  \nPlease enter Chicago, New York City, or Washington: ").lower()
         except ValueError:
-            print('\nI did not recognize that city. Please try again.')
+           print('\nI did not recognize that city. Please try again.')
         if city == 'chicago':
             print("\nGathering data for Chicago!\n")
         elif city == 'new york city':
@@ -31,9 +31,12 @@ def get_filters():
         elif city == 'washington':
             print("\nGathering informaton on Washington!\n")
         else:
-            print("\nI did not recognize that city. Please restart application.")
-            sys.exit()
-        
+            restart = input("\nI did not recognize that city. Would you like to restart?.\n")
+            if restart.lower() != 'yes':
+                sys.exit()
+            else:
+                get_filters()
+              
     # get user input for month (all, january, february, ... , june)
         try:
             month = input("\nWould you like to filter the data for a specific month or all available months?  \nPlease enter January, February, March, April, May, June, or all: ").lower()
