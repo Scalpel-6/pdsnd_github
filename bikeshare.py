@@ -273,7 +273,36 @@ def user_stats(df):
     else:
         print("The 'Birth Year' column is not available in the DataFrame.")
 
+def display_data(df):
+    # Displays raw data for based on the data filters provided by the user
+    # Get total number of rows in the dataframe
+    total_rows_in_dataframe = len(df)
 
+    # Establish a varible for number of displayed rows of raw.  Setting variable so it can be configurable in future releases instead of hard coded
+    number_of_rows_to_display = 5
+    # Prompt user if they want to see raw data
+    raw_data_prompt = input("Do you want to see the first 5 rows of data?  Please enter yes or no. ")
+
+    # Loop through dataframe at an increment of the number_of_rows_to_display variable
+    if raw_data_prompt.lower() == 'yes':
+        for i in range(0, total_rows_in_dataframe, number_of_rows_to_display):
+            print(df.iloc[i:i+number_of_rows_to_display])
+            print('\n')
+
+    # Request input from user if they want to see another iteration of raw data
+            next_five_raw_data_rows = input("\nWould you like to see an additional 5 rows of raw data? Please enter yes or no: ")
+    # If user input is anyting other than yes, then end application
+            if next_five_raw_data_rows != 'yes':
+                print("\nThank you for utilizing the Bikeshare application.")
+                sys.exit()                
+    # If user input indicates they want the next iteration of data displayed, continue loop until all raw data is displayed
+            else:
+                if i != total_rows_in_dataframe:
+                    print("The next iteration of data is as follows: ")
+                else:
+                    print("\nThere is no additional data to display")
+        return
+             
 def main():
     while True:
         city, month, day = get_filters()
@@ -283,6 +312,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        display_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
